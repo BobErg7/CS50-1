@@ -1,5 +1,5 @@
 /*
- * Encrypt inputted text using the Caesar cypher.
+ * Encrypt inputted text using the Caesar cipher.
  */
 #include <stdio.h>
 #include <cs50.h>
