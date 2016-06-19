@@ -39,9 +39,13 @@ int main(int argc, string argv[])
     
     string s = GetString();
     
+    // Set up variable to keep track of cipher key we should be using.
+    int t = 0;
+    
+    // Loop through characters in word and encrypt
     for(int i =0; i < strlen(s); i++) {
         // Set key:
-        int k = i % keyLength;
+        int k = t % keyLength;
         // Only encrypt letters, output numbers and symbols as normal.
         if(isalpha(s[i])) {
             int letter = s[i];
@@ -65,6 +69,8 @@ int main(int argc, string argv[])
                 
             }
             printf("%c", encryptedLetter);
+            // Only increment the cipher key when used.
+            t++;
         } else {
             printf("%c", s[i]);
         }
