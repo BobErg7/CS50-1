@@ -16,7 +16,6 @@
  */
 int binarySearch(int key, int array[], int min, int max) {
     if(max < min) {
-        printf("Max is now less than min \n");
         return -1;
     }
     else{
