@@ -12,17 +12,39 @@
 #include "helpers.h"
 
 /**
+ * Recursive binary search function, returns the key the value exists at or -1 if it does not exist.
+ */
+int binarySearch(int key, int array[], int min, int max) {
+    if(max < min) {
+        printf("Max is now less than min \n");
+        return -1;
+    }
+    else{
+        int midpoint = (min + max) / 2;
+        if(array[midpoint] < key) {
+            return binarySearch(key, array, midpoint + 1, max);
+        }
+        else if (array[midpoint] > key) {
+            return binarySearch(key, array, min, midpoint - 1);
+        } 
+        else {
+            return midpoint;
+        }   
+    }
+}
+
+/**
  * Returns true if value is in array of n values, else false.
  */
 bool search(int value, int values[], int n)
 {
-    // Linearly search for the value
-    for(int i = 0; i < n; i++){
-        if(values[i] == value) {
-            return true;
-        }
+    // Binary search for the value
+    int result = binarySearch(value, values, 0, n);
+    if(result != -1) {
+        return true;
+    } else {
+        return false;
     }
-    return false;
 }
 
 /**
@@ -43,14 +65,3 @@ void sort(int values[], int n)
     
     return;
 }
-
-
-
-
-
-
-
-
-
-
-
